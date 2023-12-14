@@ -1,4 +1,4 @@
-package TrackingCaloriesProject.FirstApp.Components;
+package TrackingCaloriesProject.FirstApp.module.Components;
 
 import TrackingCaloriesProject.FirstApp.Interfaces.GetInformation;
 import lombok.Getter;

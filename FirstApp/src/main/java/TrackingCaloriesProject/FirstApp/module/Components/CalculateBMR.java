@@ -1,6 +1,5 @@
-package TrackingCaloriesProject.FirstApp.Components;
+package TrackingCaloriesProject.FirstApp.module.Components;
 
-import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -8,14 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Getter
-public class Objective {
-    private Integer numberOfCaloriesObjective;
-
-    private Double proteinIntake;
-
-    private Double carbohydratesIntake;
-
-    private Double fatsIntake;
+public class CalculateBMR {
 
     private Profile profile;
 
