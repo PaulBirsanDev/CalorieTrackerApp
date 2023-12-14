@@ -1,5 +1,6 @@
 package TrackingCaloriesProject.FirstApp.Components;
 
+import TrackingCaloriesProject.FirstApp.Interfaces.GetInformation;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Component
 @RequiredArgsConstructor
-public class Profile {
+public class Profile implements GetInformation {
     private String firstName;
 
     private String lastName;
@@ -22,4 +23,7 @@ public class Profile {
 
     private Character gender;
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }
