@@ -8,7 +8,8 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 
-public class CalorieCounter {
+public class UpdatedMeal {
+    private Integer mealID;
     private Double totalCaloriesConsumed;
     private Double totalProteinConsumed;
     private Double totalCarbohydrateConsumed;
