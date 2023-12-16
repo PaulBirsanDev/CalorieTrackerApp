@@ -1,15 +1,13 @@
 package TrackingCaloriesProject.FirstApp.module.Components;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.With;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 @Builder
-@With
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
 @Getter
 public class AddMeals {
     private String name;
