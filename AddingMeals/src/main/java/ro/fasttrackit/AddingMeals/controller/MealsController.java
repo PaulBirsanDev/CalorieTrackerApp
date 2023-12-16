@@ -1,5 +1,6 @@
 package ro.fasttrackit.AddingMeals.controller;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +13,12 @@ import java.util.List;
 @RestController
 @RequestMapping("meals")
 @RequiredArgsConstructor
-public class AddMealsController {
+public class MealsController {
     private final AddMealsService service;
 
     @GetMapping
     List<Meal> getAll() {
         return service.listALlMeals();
     }
+
 }

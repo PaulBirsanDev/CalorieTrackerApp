@@ -11,8 +11,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AddMealsService {
-    private  MealsReader reader;
-    private  List<Meal> meals;
+    private final MealsReader reader;
+    private final List<Meal> meals;
 
     @PostConstruct
     void init() {
