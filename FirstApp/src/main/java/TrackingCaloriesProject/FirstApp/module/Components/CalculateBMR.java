@@ -11,11 +11,6 @@ public class CalculateBMR {
 
     private Profile profile;
 
-//    @PostConstruct
-//    void setNumberOfCaloriesObjective() {
-//        this.numberOfCaloriesObjective = chooseExpression();
-//    }
-
     public Integer chooseExpression() {
         int metabolicRate;
         if (profile.getGender().equals('M')) {

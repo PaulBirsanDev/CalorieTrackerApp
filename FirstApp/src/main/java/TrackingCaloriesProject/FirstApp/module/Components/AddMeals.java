@@ -1,24 +1,23 @@
 package TrackingCaloriesProject.FirstApp.module.Components;
 
+import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.With;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Builder
+@With
+@Getter
 public class AddMeals {
+    private String name;
     private Double quantity;
     private Double caloriePer100gr;
-    private Integer proteinPer100gr;
-    private Integer carbohydratePer100gr;
-    private Integer fatsPer100gr;
-
-//    public AddMeals(Double quantity, Double caloriePer100gr, Integer proteinPer100gr, Integer carbohydratePer100gr, Integer fatsPer100gr) {
-//        this.quantity = quantity;
-//        this.caloriePer100gr = caloriePer100gr;
-//        this.proteinPer100gr = proteinPer100gr;
-//        this.carbohydratePer100gr = carbohydratePer100gr;
-//        this.fatsPer100gr = fatsPer100gr;
-//    }
+    private Double proteinPer100gr;
+    private Double carbohydratePer100gr;
+    private Double fatsPer100gr;
 
     public Double calculateCaloriePerPortion() {
         return quantity * (caloriePer100gr / 100.00);
