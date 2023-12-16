@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 @Getter
 public class AddMeals {
     private String name;
-    private Double quantity;
-    private Double caloriePer100gr;
-    private Double proteinPer100gr;
-    private Double carbohydratePer100gr;
-    private Double fatsPer100gr;
+    private double quantity;
+    private double caloriePer100gr;
+    private double proteinPer100gr;
+    private double carbohydratePer100gr;
+    private double fatsPer100gr;
 
     public Double calculateCaloriePerPortion() {
         return quantity * (caloriePer100gr / 100.00);
