@@ -10,6 +10,7 @@ import ro.fasttrackit.AddingMeals.reader.MealsReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +26,21 @@ public class AddMealsService {
 
     public List<Meal> listALlMeals() {
         return meals;
+    }
+
+    public UpdatedMeal getTotalCaloriesAndMacronutrients() {
+        UpdatedMeal totals = new UpdatedMeal();
+        List<UpdatedMeal> updatedMeals = getUpdatedMeals();
+
+        for (UpdatedMeal meal : updatedMeals) {
+            totals.setTotalCaloriesConsumed(totals.getTotalCaloriesConsumed() + meal.getTotalCaloriesConsumed());
+            totals.setTotalProteinConsumed(totals.getTotalProteinConsumed() + meal.getTotalProteinConsumed());
+            totals.setTotalCarbohydrateConsumed(totals.getTotalCarbohydrateConsumed() + meal.getTotalCarbohydrateConsumed());
+            totals.setTotalFatsConsumed(totals.getTotalFatsConsumed() + meal.getTotalFatsConsumed());
+        }
+
+        return totals;
+
     }
 
     public List<UpdatedMeal> getUpdatedMeals() {

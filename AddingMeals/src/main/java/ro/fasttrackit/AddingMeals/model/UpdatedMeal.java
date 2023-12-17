@@ -1,7 +1,6 @@
 package ro.fasttrackit.AddingMeals.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 public class UpdatedMeal {
     private Integer mealID;
-    private Double totalCaloriesConsumed;
-    private Double totalProteinConsumed;
-    private Double totalCarbohydrateConsumed;
-    private Double totalFatsConsumed;
+    private Double totalCaloriesConsumed = 0.0;
+    private Double totalProteinConsumed = 0.0;
+    private Double totalCarbohydrateConsumed = 0.0;
+    private Double totalFatsConsumed = 0.0;
 }

@@ -1,10 +1,7 @@
 package ro.fasttrackit.AddingMeals.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ro.fasttrackit.AddingMeals.model.UpdatedMeal;
 import ro.fasttrackit.AddingMeals.model.Meal;
 import ro.fasttrackit.AddingMeals.service.AddMealsService;
@@ -28,9 +25,14 @@ public class MealsController {
                 .orElseThrow(() -> new RuntimeException("Could not find meal with this id %s".formatted(id)));
     }
 
-    @GetMapping("calorieCounter")
+    @GetMapping("updatedMeals")
     List<UpdatedMeal> getUpdatedMeals() {
         return service.getUpdatedMeals();
+    }
+
+    @GetMapping("total")
+    UpdatedMeal getTotalsCaloriesAndMacronutrientsConsumed() {
+        return service.getTotalCaloriesAndMacronutrients();
     }
 
 }
