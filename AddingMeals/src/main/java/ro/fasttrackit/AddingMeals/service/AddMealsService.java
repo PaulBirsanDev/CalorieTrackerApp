@@ -6,26 +6,35 @@ import org.springframework.stereotype.Service;
 import ro.fasttrackit.AddingMeals.model.UpdatedMeal;
 import ro.fasttrackit.AddingMeals.model.Meal;
 import ro.fasttrackit.AddingMeals.reader.MealsReader;
+import ro.fasttrackit.AddingMeals.repository.MealRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
 public class AddMealsService {
     private final MealsReader reader;
-    private final List<Meal> meals;
+    private final MealRepository repository;
 
     @PostConstruct
     void init() {
-        meals.clear();
-        meals.addAll(reader.readMeals());
+        repository.saveAll(reader.readMeals());
     }
 
     public List<Meal> listALlMeals() {
-        return meals;
+        return repository.findAll();
+    }
+
+    public Meal addMeal(Meal meal) {
+        return repository.save(meal);
+    }
+
+    public Optional<Meal> deleteMeal(int id) {
+        Optional<Meal> mealOptional = findById(id);
+        mealOptional.ifPresent(repository :: delete);
+        return mealOptional;
     }
 
     public UpdatedMeal getTotalCaloriesAndMacronutrients() {
@@ -45,7 +54,7 @@ public class AddMealsService {
 
     public List<UpdatedMeal> getUpdatedMeals() {
         List<UpdatedMeal> updatedMeal = new ArrayList<>();
-        meals.forEach(meal -> {
+        repository.findAll().forEach(meal -> {
              updatedMeal.add(caloriesPerMeal(meal));
         });
 
@@ -53,9 +62,7 @@ public class AddMealsService {
     }
 
     public Optional<Meal> findById(int id) {
-        return meals.stream()
-                .filter(meal -> meal.getId() == id)
-                .findFirst();
+        return repository.findById(id);
     }
 
     private UpdatedMeal caloriesPerMeal(Meal meal) {
@@ -70,7 +77,7 @@ public class AddMealsService {
     }
 
     private Double calculateCaloriePerPortion(Meal meal) {
-        return meal.getQuantity() * (meal.getCaloriePer100gr() / 100.00);
+        return (meal.getQuantity() * (meal.getCaloriePer100gr() / 100.00));
     }
     private Double calculateProteinPerPortion(Meal meal) {
         return meal.getProteinPer100gr() * (meal.getQuantity() / 100.00);

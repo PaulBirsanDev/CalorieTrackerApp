@@ -11,7 +11,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Getter
 @Setter
-//@Entity
+@Entity
 @With
 @Builder
 @NoArgsConstructor
@@ -19,8 +19,8 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Component
 public class Meal {
 
-//    @Id
-//    @GeneratedValue(strategy = IDENTITY)
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Integer id;
     private String name;
     private Double quantity;
