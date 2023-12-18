@@ -42,14 +42,14 @@ public class MealsController {
         return service.addMeal(meal);
     }
 
-    @DeleteMapping({"id"})
+    @DeleteMapping("{id}")
     Meal deleteMeal(@PathVariable int id) {
         return service.deleteMeal(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Could not find country with id %s".formatted(id), id));
 
     }
 
-    @PatchMapping({"id"})
+    @PatchMapping("{id}")
     Meal editMeal(@RequestBody Meal potentialNewMeal, @PathVariable int id) {
         return service.editMeal(potentialNewMeal, id);
     }
