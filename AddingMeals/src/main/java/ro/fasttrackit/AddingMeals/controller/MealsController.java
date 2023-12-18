@@ -49,5 +49,11 @@ public class MealsController {
 
     }
 
+    @PatchMapping({"id"})
+    Meal editMeal(@RequestBody Meal potentialNewMeal, @PathVariable int id) {
+        return service.editMeal(potentialNewMeal, id);
+    }
+
+
 
 }
