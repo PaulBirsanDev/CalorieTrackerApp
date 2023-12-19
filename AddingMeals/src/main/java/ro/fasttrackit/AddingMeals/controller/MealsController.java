@@ -11,8 +11,9 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("meals")
+@RequestMapping("meal")
 @RequiredArgsConstructor
+@CrossOrigin(value = "http://localhost:4200")
 public class MealsController {
     private final AddMealsService service;
 
@@ -27,11 +28,13 @@ public class MealsController {
                 .orElseThrow(() -> new RuntimeException("Could not find meal with this id %s".formatted(id)));
     }
 
+    @CrossOrigin(value ="http://localhost:4200")
     @GetMapping("updatedMeals")
     List<UpdatedMeal> getUpdatedMeals() {
         return service.getUpdatedMeals();
     }
 
+    @CrossOrigin(value ="http://localhost:4200")
     @GetMapping("total")
     UpdatedMeal getTotalsCaloriesAndMacronutrientsConsumed() {
         return service.getTotalCaloriesAndMacronutrients();
