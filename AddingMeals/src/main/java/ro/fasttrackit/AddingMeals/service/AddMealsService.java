@@ -67,7 +67,9 @@ public class AddMealsService {
 
     public List<UpdatedMeal> getUpdatedMeals() {
         List<UpdatedMeal> updatedMeal = new ArrayList<>();
-        repository.findAll().forEach(meal -> {
+        repository.findAll().stream()
+                .filter(meal -> meal.getQuantity() != null)
+                .forEach(meal -> {
             updatedMeal.add(caloriesPerMeal(meal));
         });
 
